@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You, My Love 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+:root {
+  --pink: #ff8fce;
+  --purple: #a78bfa;
+  --bg: #10091e;
+  --text: #fff2fb;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 15% 15%, #69255b66, transparent 40%),
+    radial-gradient(ellipse at 85% 75%, #4935a566, transparent 42%),
+    var(--bg);
+  overflow-x: hidden;
+}
+
+button { font: inherit; cursor: pointer; }
+
+#hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  bottom: -40px;
+  color: var(--pink);
+  opacity: 0;
+  animation: floatUp linear forwards;
+  text-shadow: 0 0 15px #ff7bd5;
+}
+
+@keyframes floatUp {
+  10% { opacity: .7; }
+  100% { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+}
+
+nav, main, footer {
+  position: relative;
+  z-index: 1;
+}
+
+nav {
+  width: min(1100px, 90%);
+  margin: auto;
+  padding: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: var(--pink);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav-tag {
+  font-size: 12px;
+  border: 1px solid #ffffff22;
+  padding: 8px 13px;
+  border-radius: 50px;
+  color: #e7c9ff;
+}
+
+.hero {
+  min-height: 77vh;
+  width: min(850px, 90%);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 55px 0 75px;
+}
+
+.eyebrow {
+  color: var(--pink);
+  border: 1px solid #ff8fce44;
+  background: #ff8fce0b;
+  border-radius: 50px;
+  padding: 9px 17px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(43px, 8vw, 82px);
+  font-weight: 500;
+  line-height: 1.13;
+  margin-bottom: 20px;
+}
+
+h1 span {
+  display: block;
+  font-style: italic;
+  color: var(--pink);
+  text-shadow: 0 0 30px #ff70cf66;
+}
+
+.subtitle {
+  color: #c9bad8;
+  line-height: 1.9;
+  max-width: 500px;
+  font-size: 15px;
+}
+
+.big-heart {
+  font-size: 70px;
+  margin: 22px 0;
+  filter: drop-shadow(0 0 20px #ff6dc9);
+  animation: heartbeat 1.6s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.13); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+}
+
+.btn {
+  border: 0;
+  border-radius: 50px;
+  padding: 15px 26px;
+  background: linear-gradient(110deg, #ff8fce, #b69aff);
+  color: #29102e;
+  font-weight: 700;
+  box-shadow: 0 0 25px #d77bea44;
+  transition: .3s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 35px #e887eaaa;
+}
+
+.hint {
+  font-size: 12px;
+  color: #9584aa;
+  margin-top: 15px;
+}
+
+section {
+  width: min(850px, 90%);
+  margin: 0 auto 75px;
+}
+
+.section-label {
+  text-align: center;
+  color: var(--pink);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-bottom: 13px;
+}
+
+.section-title {
+  font: 500 clamp(28px, 5vw, 40px) 'Playfair Display', serif;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.glass {
+  background: linear-gradient(135deg, #ffffff0d, #ffffff04);
+  border: 1px solid #ffffff17;
+  border-radius: 24px;
+  padding: clamp(23px, 5vw, 42px);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 20px 70px #0000001c;
+}
+
+.letter {
+  color: #dfd1e9;
+  line-height: 2;
+  font-size: 14px;
+  white-space: pre-line;
+}
+
+.letter strong { color: var(--pink); }
+
+.signature {
+  font: italic 23px 'Playfair Display', serif;
+  color: var(--pink);
+  margin-top: 25px;
+}
+
+.memories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.memory {
+  min-height: 150px;
+  border: 1px solid #ffffff15;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #572d6b88, #b74b9250);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 18px 10px;
+  gap: 12px;
+  transition: .3s;
+}
+
+.memory:hover { transform: translateY(-5px); }
+
+.memory .emoji { font-size: 34px; }
+
+.memory p { color: #e8d5f0; font-size: 12px; line-height: 1.6; }
+
+.promise {
+  text-align: center;
+  color: #e0cfe9;
+  line-height: 2;
+  font-size: 14px;
+}
+
+.promise .emoji { font-size: 40px; margin-bottom: 12px; }
+
+footer {
+  text-align: center;
+  padding: 10px 20px 35px;
+  color: #9584aa;
+  font-size: 12px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: #090511dd;
+  backdrop-filter: blur(12px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal.show { display: flex; }
+
+.modal-card {
+  width: min(480px, 100%);
+  background: linear-gradient(145deg, #281638, #171025);
+  border: 1px solid #ff9cdc55;
+  border-radius: 28px;
+  padding: 38px 25px;
+  text-align: center;
+  box-shadow: 0 0 70px #e76bc933;
+  animation: appear .45s ease;
+}
+
+@keyframes appear {
+  from { transform: scale(.8) translateY(20px); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-card .emoji { font-size: 57px; margin-bottom: 16px; }
+
+.modal-card h2 {
+  font: 500 32px 'Playfair Display', serif;
+  color: var(--pink);
+  margin-bottom: 15px;
+}
+
+.modal-card p { color: #e0cfe9; line-height: 1.9; font-size: 14px; }
+
+.modal-card .btn { margin-top: 24px; }
+
+@media (max-width: 600px) {
+  .hero { min-height: 75vh; }
+  .memories { grid-template-columns: 1fr; }
+  .memory { min-height: 110px; }
+  nav { padding: 20px 0; }
+}
+</style>
+</head>
+
+<body>
+<div id="hearts"></div>
+
+<nav>
+  <div class="logo">♡ OUR LITTLE WORLD</div>
+  <div class="nav-tag">Made with love ✦</div>
+</nav>
+
+<main>
+  <div class="hero">
+    <div class="eyebrow">A LITTLE SURPRISE FOR YOU</div>
+
+    <h1>For You,<span id="heroName">My Love.</span></h1>
+
+    <p class="subtitle">
+      Aku punya sesuatu yang sederhana,
+      tapi aku buat khusus untuk seseorang
+      yang sangat berarti buat aku. 💗
+    </p>
+
+    <div class="big-heart">♡</div>
+
+    <button class="btn" onclick="openLetter()">
+      Open Your Surprise 💌
+    </button>
+
+    <p class="hint">Psst... klik tombolnya ya, sayang.</p>
+  </div>
+
+  <section>
+    <div class="section-label">A letter from my heart</div>
+    <h2 class="section-title">Surat Kecil Untukmu</h2>
+
+    <div class="glass">
+      <div class="letter" id="letterText">Hai, sayangku! 💗
+
+Aku cuma mau bilang terima kasih karena sudah hadir di hidup aku.
+Kamu membuat hari-hari biasa terasa lebih istimewa.
+
+Aku tahu hubungan kita nggak selalu sempurna.
+Mungkin ada hari ketika kita berbeda pendapat, merasa lelah,
+atau nggak tahu harus berkata apa.
+
+Tapi aku ingin kita selalu belajar memahami satu sama lain,
+saling mendukung, dan tetap jujur dalam keadaan apa pun.
+
+Aku nggak bisa menjanjikan semuanya akan selalu mudah,
+tapi aku ingin terus berusaha membangun hubungan yang baik
+bersama kamu.
+
+Semoga kita selalu punya alasan untuk tersenyum,
+bertumbuh bersama, dan menciptakan banyak kenangan indah.
+
+                Dengan penuh cinta, 💕</div>
+
+      <div class="signature" id="signature">— Dari seseorang yang sayang kamu</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Little things matter</div>
+    <h2 class="section-title">Kenapa Kamu Istimewa?</h2>
+
+    <div class="memories">
+      <div class="memory">
+        <div class="emoji">🌷</div>
+        <p>Senyummu bisa membuat hari yang berat terasa lebih ringan.</p>
+      </div>
+
+      <div class="memory">
+        <div class="emoji">🌙</div>
+        <p>Obrolan sederhana denganmu bisa menjadi kenangan berharga.</p>
+      </div>
+
+      <div class="memory">
+        <div class="emoji">💗</div>
+        <p>Aku menghargai dirimu, bukan karena kamu sempurna, tetapi karena kamu adalah kamu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="glass promise">
+      <div class="emoji">🫶</div>
+      <div class="section-label">One little promise</div>
+      <h2 class="section-title">Kita, Pelan-Pelan</h2>
+      Aku ingin kita saling mendengarkan, menghargai,
+      dan bertumbuh bersama. Nggak harus sempurna,
+      yang penting kita sama-sama berusaha.
+      <br><br>
+      <button class="btn" onclick="openSurprise()">
+        Ada Satu Hal Lagi... 💝
+      </button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Dibuat dengan sepenuh hati ♡
+  <br><br>
+  <span id="footerYear"></span>
+</footer>
+
+<div class="modal" id="modal" onclick="closeOutside(event)">
+  <div class="modal-card">
+    <div class="emoji" id="modalEmoji">💌</div>
+    <h2 id="modalTitle">Untuk Kamu</h2>
+    <p id="modalMessage">Kamu adalah seseorang yang sangat berarti.</p>
+    <button class="btn" onclick="closeModal()">Peluk Jauh! 🫂</button>
+  </div>
+</div>
+
+<script>
+// ======================================
+// GANTI BAGIAN INI SESUAI KEINGINAN KAMU
+// ======================================
+
+const CONFIG = {
+  namaPacar: "Sayang",
+  namaPengirim: "Seseorang yang sayang kamu",
+
+  judulKejutan: "I Love You! 💗",
+  pesanKejutan:
+    "Terima kasih sudah menjadi bagian dari ceritaku. " +
+    "Semoga kita selalu saling menghargai, mendukung, " +
+    "dan punya banyak alasan untuk bahagia bersama. 💕",
+
+  judulKedua: "Kamu Berharga! 🌷",
+  pesanKedua:
+    "Jangan lupa jaga diri, istirahat yang cukup, " +
+    "dan tetap jadi dirimu sendiri. Kamu pantas mendapatkan " +
+    "cinta, rasa hormat, dan kebahagiaan."
+};
+
+// Terapkan nama otomatis
+document.getElementById("heroName").textContent =
+  CONFIG.namaPacar + ".";
+
+document.getElementById("signature").textContent =
+  "— " + CONFIG.namaPengirim;
+
+document.getElementById("footerYear").textContent =
+  "© " + new Date().getFullYear() + " • For You, With Love";
+
+// Buka surat kejutan
+function openLetter() {
+  showModal("💌", "Hai, " + CONFIG.namaPacar + "!", CONFIG.pesanKejutan);
+  burstHearts(28);
+}
+
+// Kejutan kedua
+function openSurprise() {
+  showModal("💖", CONFIG.judulKedua, CONFIG.pesanKedua);
+  burstHearts(40);
+}
+
+// Modal
+function showModal(emoji, title, message) {
+  document.getElementById("modalEmoji").textContent = emoji;
+  document.getElementById("modalTitle").textContent = title;
+  document.getElementById("modalMessage").textContent = message;
+  document.getElementById("modal").classList.add("show");
+}
+
+function closeModal() {
+  document.getElementById("modal").classList.remove("show");
+}
+
+function closeOutside(event) {
+  if (event.target.id === "modal") closeModal();
+}
+
+// Hati melayang
+function createHeart() {
+  const container = document.getElementById("hearts");
+  const heart = document.createElement("span");
+
+  heart.className = "heart";
+  heart.textContent = ["♡", "♥", "💗", "✦"][Math.floor(Math.random() * 4)];
+  heart.style.left = Math.random() * 100 + "%";
+  heart.style.fontSize = (12 + Math.random() * 22) + "px";
+  heart.style.animationDuration = (6 + Math.random() * 7) + "s";
+
+  container.appendChild(heart);
+  setTimeout(() => heart.remove(), 14000);
+}
+
+setInterval(createHeart, 650);
+
+// Ledakan hati saat tombol ditekan
+function burstHearts(amount) {
+  for (let i = 0; i < amount; i++) {
+    setTimeout(() => {
+      const heart = document.createElement("span");
+      heart.className = "heart";
+      heart.textContent = ["💗", "💖", "💕", "♡", "✨"][
+        Math.floor(Math.random() * 5)
+      ];
+
+      heart.style.left = (15 + Math.random() * 70) + "%";
+      heart.style.bottom = (10 + Math.random() * 30) + "%";
+      heart.style.fontSize = (16 + Math.random() * 25) + "px";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+
+      document.getElementById("hearts").appendChild(heart);
+      setTimeout(() => heart.remove(), 5500);
+    }, i * 45);
+  }
+}
+
+// Tutup modal dengan tombol Escape
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeModal();
+});
+</script>
+</body>
+</html>
